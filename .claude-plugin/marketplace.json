@@ -1,0 +1,19 @@
+{
+    "name": "gemini-ocr-tool",
+    "owner": {
+        "name": "Dennis Vriend",
+        "email": "dvriend@ilionx.com",
+        "url": "https://github.com/dnvriend"
+    },
+    "metadata": {
+        "description": "Marketplace for gemini-ocr-tool CLI plugin - A Python CLI tool",
+        "version": "0.1.0"
+    },
+    "plugins": [
+        {
+            "name": "gemini-ocr-tool",
+            "source": "./plugins/gemini-ocr-tool",
+            "description": "A Python CLI tool"
+        }
+    ]
+}
