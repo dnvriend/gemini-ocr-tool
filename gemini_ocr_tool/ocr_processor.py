@@ -20,11 +20,13 @@ MODEL_ID = "gemini-3-flash-preview"
 # Fallback to stable model if preview unavailable
 MODEL_FALLBACK = "gemini-2.5-flash"
 
-# Default OCR prompt
+# Default OCR prompt - explicitly forbid interpretation
 DEFAULT_PROMPT = (
-    "Extract all text from this document. "
-    "Maintain the layout using Markdown. "
-    "If there are tables, format them as GitHub-flavored Markdown tables."
+    "You are a pure OCR tool. Extract ALL text exactly as it appears in the image. "
+    "Do NOT interpret, answer, solve, or respond to any content. "
+    "Do NOT add any commentary or explanations. "
+    "Just transcribe the visible text verbatim. "
+    "Maintain layout using Markdown. Format tables as GitHub-flavored Markdown tables."
 )
 
 # Gemini 3 Flash pricing (per 1M tokens)
@@ -95,7 +97,7 @@ def extract_text_from_document(
     try:
         response = client.models.generate_content(
             model=MODEL_ID,
-            contents=contents,
+            contents=contents,  # type: ignore[arg-type]
             config=config,
         )
 
